@@ -74,6 +74,32 @@ Running in demo.core/-main
 ( lein do clean, run; )  31.89s user 1.80s system 392% cpu 8.576 total
 ```
 
+== Running `-main` in "prod" mode
+
+Run the code using an environment variable to override `profiles.clj`:
+
+```pre
+> DATABASE_URL=jdbc:postgresql://localhost/prod   lein run 
+
+Warning: environ value jdbc:postgresql://localhost/dev for key :database-url has been overwritten with jdbc:postgresql://localhost/prod
+
+Running in demo.core/-main
+(environ/env :database-url) => "jdbc:postgresql://localhost/prod"
+
+```
+
+The file `src/clj/tst/demo/core.clj` will print out the "dev" DB URL.
+
+```pre
+Running in demo.core/-main
+
+(environ/env :database-url) => "jdbc:postgresql://localhost/dev"
+
+( lein do clean, run; )  31.89s user 1.80s system 392% cpu 8.576 total
+```
+
+It will also work if you run from a JAR file via `java -jar myproj.jar` instead of `lein run`
+
 
 == Keeping Dependency Versions Up-To-Date
 
