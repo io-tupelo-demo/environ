@@ -44,6 +44,18 @@ have included a dummy version in this demo project for illustrative purposes.  I
 
 ```pre
 > lein clean ; lein test
+
+lein test _bootstrap
+
+-----------------------------------
+   Clojure 1.10.3    Java 15.0.2
+-----------------------------------
+
+lein test tst.demo.core
+
+Ran 2 tests containing 1 assertions.
+0 failures, 0 errors.
+( lein do clean, test; )  34.44s user 1.90s system 408% cpu 8.906 total
 ```
 
 The file `test/clj/tst/demo/core.clj` verifies that the "test" DB URL is found.
@@ -55,6 +67,14 @@ The file `test/clj/tst/demo/core.clj` verifies that the "test" DB URL is found.
 ```
 
 The file `src/clj/tst/demo/core.clj` will print out the "dev" DB URL.
+
+```pre
+Running in demo.core/-main
+
+(environ/env :database-url) => "jdbc:postgresql://localhost/dev"
+
+( lein do clean, run; )  31.89s user 1.80s system 392% cpu 8.576 total
+```
 
 
 == Keeping Dependency Versions Up-To-Date
