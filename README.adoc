@@ -5,39 +5,13 @@ A simple template for Clojure projects
 
 == Overview
 
-This Clojure project shows my favorite layout of for both source & test files
-(sample Java source is included as well).  The project is also set-up to use the
-https://github.com/cloojure/tupelo[Tupelo Clojure] library and the
-https://github.com/jakemcc/lein-test-refresh[lein-test-refresh] plugin.
+This Clojure demo project shows how to configure and use the 
+https://github.com/weavejester/environ[weavejester/environ]
+library.
 
-== How to User This Project
+== Running in "test" mode
 
-To use this project, we assume you have already installed Java, Clojure, and Leiningen, and `git`.
-
-=== Clone the Project Using Git
-
-Verify you have Git installed:
-
-```bash
-> git --version
-git version 2.25.0
-```
-
-Use `git` to clone the project (via SSH) into a new project names `demo`:
-```bash
-> git clone  git@github.com:io-tupelo/clj-template.git  demo  # git ssh URL
-```
-
-or, clone via HTTPS (if you don't have SSH set up on your computer & GitHub):
-```bash
-> git clone  https://github.com/io-tupelo/clj-template.git  demo  # git https URL
-```
-
-Then `cd` (change directory) into the new project:
-
-```bash
-> cd demo
-```
+To use this project, we assume you have already installed Java, Clojure, and Leiningen, installed.
 
 === Verify you have Java, Clojure, and Leiningen set up correctly
 
@@ -53,12 +27,35 @@ Java HotSpot(TM) 64-Bit Server VM (build 13+33, mixed mode, sharing)
 Leiningen 2.9.1 on Java 13 Java HotSpot(TM) 64-Bit Server VM
 ```
 
-== Running Unit Tests - Plain
+== Description of `project.clj` and `profiles.clj`
+
+We don't want to check sensitive information like passords into SCM. Also, we will typically
+have different credentials for different phases of a project
+(e.g. database connections for dev, test, prod, etc).  For this demo, we place DB connection
+strings for dev and test into `profiles.clj`.  This file is normally never checked into SCM, but we
+have included a dummy version in this demo project for illustrative purposes.  It looks like this:
+
+```clojure
+{:profiles/dev  {:env {:database-url "jdbc:postgresql://localhost/dev"}}
+ :profiles/test {:env {:database-url "jdbc:postgresql://localhost/test"}}}
+```
+
+== Running Unit Tests 
 
 ```pre
-> lein clean
-> lein test
+> lein clean ; lein test
 ```
+
+The file `test/clj/tst/demo/core.clj` verifies that the "test" DB URL is found.
+
+== Running `-main` in "dev" mode
+
+```pre
+> lein clean ; lein run
+```
+
+The file `src/clj/tst/demo/core.clj` will print out the "dev" DB URL.
+
 
 == Keeping Dependency Versions Up-To-Date
 
