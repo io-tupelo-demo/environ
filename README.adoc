@@ -1,0 +1,85 @@
+
+= Environ Library Demo
+
+A simple template for Clojure projects
+
+== Overview
+
+This Clojure project shows my favorite layout of for both source & test files
+(sample Java source is included as well).  The project is also set-up to use the
+https://github.com/cloojure/tupelo[Tupelo Clojure] library and the
+https://github.com/jakemcc/lein-test-refresh[lein-test-refresh] plugin.
+
+== How to User This Project
+
+To use this project, we assume you have already installed Java, Clojure, and Leiningen, and `git`.
+
+=== Clone the Project Using Git
+
+Verify you have Git installed:
+
+```bash
+> git --version
+git version 2.25.0
+```
+
+Use `git` to clone the project (via SSH) into a new project names `demo`:
+```bash
+> git clone  git@github.com:io-tupelo/clj-template.git  demo  # git ssh URL
+```
+
+or, clone via HTTPS (if you don't have SSH set up on your computer & GitHub):
+```bash
+> git clone  https://github.com/io-tupelo/clj-template.git  demo  # git https URL
+```
+
+Then `cd` (change directory) into the new project:
+
+```bash
+> cd demo
+```
+
+=== Verify you have Java, Clojure, and Leiningen set up correctly
+
+Try the following commands, and make sure you get similar output:
+
+```bash
+> java --version
+java 13 2019-09-17
+Java(TM) SE Runtime Environment (build 13+33)
+Java HotSpot(TM) 64-Bit Server VM (build 13+33, mixed mode, sharing)
+
+> lein --version
+Leiningen 2.9.1 on Java 13 Java HotSpot(TM) 64-Bit Server VM
+```
+
+== Running Unit Tests - Plain
+
+```pre
+> lein clean
+> lein test
+```
+
+== Keeping Dependency Versions Up-To-Date
+
+This project includes the `lein-ancient` plugin, which will tell you if any of your dependency
+libraries are out of date. I have an alias:
+
+```bash
+alias laca="lein ancient check :all"
+```
+
+which will give you a list of version updates you should make, or just
+
+```pre
+all artifacts are up-to-date.
+```
+
+if you are already up-to-date on everything.
+
+== License
+
+Copyright © 2021  Alan Thompson
+
+Distributed under the link:https://www.eclipse.org/legal/epl-v10.html[Eclipse Public License], the same as Clojure.
+
