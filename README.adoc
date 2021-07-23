@@ -89,17 +89,8 @@ Running in demo.core/-main
 ```
 
 The file `src/clj/tst/demo/core.clj` will print out the "prod" DB URL from the env var
-`DATABASE_URL`.
-
-```pre
-Running in demo.core/-main
-
-(environ/env :database-url) => "jdbc:postgresql://localhost/dev"
-
-( lein do clean, run; )  31.89s user 1.80s system 392% cpu 8.576 total
-```
-
-It will also work if you run from a JAR file via `java -jar myproj.jar` instead of `lein run`
+`DATABASE_URL`.  It will also work if you run from a JAR file 
+via `java -jar myproj.jar` instead of `lein run`
 
 
 == Keeping Dependency Versions Up-To-Date
