@@ -1,7 +1,5 @@
 
-= Environ Library Demo
-
-A simple template for Clojure projects
+= Weavejester/Environ Library Demo
 
 == Overview
 
