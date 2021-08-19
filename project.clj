@@ -12,8 +12,11 @@
     [com.jakemccrary/lein-test-refresh "0.24.1"]
     [lein-ancient "0.7.0"]
     [lein-environ "1.2.0"] ; causes `profiles.clj` to override `project.clj`
-    [lein-pprint "1.3.2"]  ; allows display of project map
-    ]
+
+    [lein-pprint "1.3.2"]   ; allows display of project map (eg `lein  with-profile dev  pprint`)
+                            ;   see:  show-profile-dev.bash
+                            ;         show-profile-test.bash
+  ]
 
   :global-vars {*warn-on-reflection* false}
   :main ^:skip-aot demo.core
