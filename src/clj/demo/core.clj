@@ -9,7 +9,11 @@
   [& args]
   (newline)
   (println "Running in demo.core/-main")
-  (spyx (environ/env :database-url))  ; => "jdbc:postgresql://localhost/dev"
-  (newline)
-)
+
+  ; prints current value from execution environment 
+  ;   "dev" mode => "jdbc:postgresql://localhost/dev"
+  ;   "prod" mode => "jdbc:postgresql://localhost/prod"
+  (spyx (environ/env :database-url))
+
+  (newline))
 
