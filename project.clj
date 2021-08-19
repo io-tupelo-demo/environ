@@ -29,11 +29,13 @@
              :profiles/dev  {}  ; placeholder value
              :profiles/test {}  ; placeholder value
 
-             ; *** default map values before merging ***
+             ; *** default map values before merging/appending ***
              :project/dev {:source-paths ["src" "tool-src"] }
              :project/test {:test-paths ["tool-test"]}
 
-             ; maps are merged merge, last one wins (i.e. values from `profiles.clj`)
+             ; Combine values from `project.clj` with those from `profiles.clj`.
+             ; Map values like `:global-vars` are merged (last one wins). 
+             ; Vector values like `:source-paths` are concatenated.
              :dev  [:project/dev  :profiles/dev]
              :test [:project/test :profiles/test]
            }
